@@ -97,6 +97,8 @@ namespace BitRipple
 
 		  public void DownloadTorrent(Download torrent)
 		  {
+				Log($"Downloading: {torrent.Name}", true);
+
 				var downloadResult = Repository.Downloader.DownloadTorrent(torrent);
 				if (!downloadResult.Success)
 				{
@@ -109,17 +111,20 @@ namespace BitRipple
 				return Repository.Filter.FindTorrentsMatchingFilters(feed);
 		  }
 
-		  private void Log(string description)
+		  private void Log(string description, bool log = false)
 		  {
-				InternalLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}] {description}");
+				InternalLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}] {description}", log);
 		  }
 
-		  private void InternalLog(string text)
+		  private void InternalLog(string text, bool log)
 		  {
 				Console.WriteLine(text);
-				using (StreamWriter sw = File.AppendText(@"Log.log"))
+				if (log)
 				{
-					 sw.WriteLine(text);
+					 using (StreamWriter sw = File.AppendText(@"Log.log"))
+					 {
+						  sw.WriteLine(text);
+					 }
 				}
 		  }
 
@@ -133,7 +138,7 @@ namespace BitRipple
 
 		  private void WriteError(string error)
 		  {
-				Log($"Error: {error}");
+				Log($"Error: {error}", true);
 		  }
 	 }
 }

@@ -161,5 +161,63 @@ namespace Tests.Repository
 				Assert.AreEqual(1, Result.Count);
 				Assert.IsTrue(Result.Any(x => x.GUID == "1"));
 		  }
+
+		  [TestMethod]
+		  public void ShouldBeAbleToDownloadEverythingInFeed()
+		  {
+				Service.Repository.Context.Data.Settings = new Settings
+				{
+					 NextIndex = new IndexStorage
+					 {
+						  Download = 1
+					 }
+				};
+
+				Feed = new Feed
+				{
+					 Id = 1,
+					 Filters = new List<Filter>
+					 {
+						  new Filter
+						  {
+								Id = 1,
+								FeedId =1 ,
+								IgnoreCaps = true,
+								Enabled = true,
+								Criterias = "*",
+								Include = new List<string> {  },
+								Exclude = new List<string> {  },
+								Downloads = new List<Download>{},
+						  }
+					 },
+					 Torrents = new List<Torrent>
+					 {
+						  new Torrent
+						  {
+								Name = "Planet Earth 2 E02 1080p WEB-DEL H.264",
+								GUID = "1"
+						  },
+						  new Torrent
+						  {
+								Name = "Planet Earth 2 E02 1080p WEB-DEL H.264",
+								GUID = "2"
+						  },
+						  new Torrent
+						  {
+								Name = "Planet Earth 2 E02 1080p HDTV x64",
+								GUID = "3"
+						  },
+						  new Torrent
+						  {
+								Name = "Planet Earth 2 E02 720p HDTV x64",
+								GUID = "4"
+						  }
+					 }
+				};
+
+				Result = Service.FindTorrentsToDownload(Feed).ToList();
+
+				Assert.AreEqual(4, Result.Count);
+		  }
 	 }
 }

@@ -15,7 +15,6 @@ namespace ReleaseBuildEventHandler
 
 		  public static void Main(string[] args)
 		  {
-				Console.WriteLine(String.Join("|||", args));
 				Execute(PostBuild, args);
 		  }
 

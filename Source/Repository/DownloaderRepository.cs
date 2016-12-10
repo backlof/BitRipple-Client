@@ -50,6 +50,7 @@ namespace Repository
 
 					 _context.TorrentDownloader.Download(download, _context.Data.Settings.Location);
 					 _context.Data.Downloads.Add(download);
+					 _context.Data.Settings.TorrentDownloadCount++;
 					 _context.Data.SaveChanges();
 					 return RepositoryResult.SuccessResult;
 				}
