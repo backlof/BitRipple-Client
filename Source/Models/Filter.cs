@@ -8,16 +8,15 @@ namespace Models
 	 [DataContract]
 	 public class Filter
 	 {
-		  //TODO Is this after or before deserializing
-		  //[OnDeserializing]
-		  //private void OnDeserializing(StreamingContext context)
-		  //{
-				//Include = new List<string>();
-				//Exclude = new List<string>();
-				//Criterias = "";
-				//Enabled = false;
-				//IgnoreCaps = true;
-		  //}
+		  [OnDeserializing]
+		  private void OnDeserializing(StreamingContext context)
+		  {
+				Include = new List<string>();
+				Exclude = new List<string>();
+				Criterias = "";
+				Enabled = true;
+				IgnoreCaps = true;
+		  }
 
 		  [DataMember(IsRequired = true)]
 		  public int Id { get; set; }
