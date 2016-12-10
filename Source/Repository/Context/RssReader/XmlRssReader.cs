@@ -25,7 +25,7 @@ namespace Repository
         private WebRequest GetRequest(string url, WebRequest wr = null)
         {
             wr = WebRequest.Create(url);
-            wr.Timeout = 3000;
+            wr.Timeout = 10000;
             return wr;
         }
     }

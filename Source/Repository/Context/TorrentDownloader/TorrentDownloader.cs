@@ -59,7 +59,7 @@ namespace Repository
         private WebRequest GetRequest(string url, WebRequest wr = null)
         {
             wr = WebRequest.Create(url);
-            wr.Timeout = 4000;
+            wr.Timeout = 15000;
             wr.ContentType = "application/x-bittorrent";
             return wr;
         }
