@@ -131,7 +131,7 @@ namespace BitRipple
 
 		  private void WriteError(string error)
 		  {
-				Log($"Error <{error}>");
+				Log($"Error: {error}");
 		  }
 	 }
 }
