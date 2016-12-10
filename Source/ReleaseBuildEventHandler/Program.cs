@@ -21,7 +21,7 @@ namespace ReleaseBuildEventHandler
 		  private static void Execute(Action<PostBuildr> method, string[] args, StandardKernel container = null)
 		  {
 				container = new StandardKernel();
-				container.Bind<IDataWriter>().To<EmptyBuilder>().InSingletonScope();
+				container.Bind<IDataWriter>().To<MiniNovaBuilder>().InSingletonScope();
 				container.Bind<PostBuildr>().ToSelf().WithConstructorArgument("location", args[0]);
 				method(container.Get<PostBuildr>());
 		  }

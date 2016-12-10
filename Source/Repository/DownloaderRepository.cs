@@ -25,7 +25,7 @@ namespace Repository
 		  {
 				if (String.IsNullOrWhiteSpace(feed.Url))
 				{
-					 return RepositoryResult.CreateError<List<Torrent>>("Feed is missing URL");
+					 return RepositoryResult.CreateError<List<Torrent>>($"Feed <{feed.Name}> is missing URL");
 				}
 
 				try
@@ -45,7 +45,7 @@ namespace Repository
 				{
 					 if (_context.Data.Settings.Location != null && !Directory.Exists(_context.Data.Settings.Location))
 					 {
-						  return RepositoryResult.CreateError("Couldn't find download location");
+						  return RepositoryResult.CreateError($"Couldn't find download location for <{download.Name}>");
 					 }
 
 					 _context.TorrentDownloader.Download(download, _context.Data.Settings.Location);

@@ -97,7 +97,7 @@ namespace BitRipple
 
 		  public void DownloadTorrent(Download torrent)
 		  {
-				Log($"Downloading: {torrent.Name}", true);
+				Log($"Downloading: <{torrent.Name}>", true);
 
 				var downloadResult = Repository.Downloader.DownloadTorrent(torrent);
 				if (!downloadResult.Success)
@@ -138,7 +138,7 @@ namespace BitRipple
 
 		  private void WriteError(string error)
 		  {
-				Log($"Error: {error}", true);
+				Log($"Error <{error}>", true);
 		  }
 	 }
 }
