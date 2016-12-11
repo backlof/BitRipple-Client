@@ -31,6 +31,7 @@ namespace Repository
 				try
 				{
 					 _context.Data.Settings.FeedDownloadCount++;
+					 _context.Data.SaveChanges();
 					 return RepositoryResult.Create(_context.RssReader.FetchFeed(feed.Url));
 				}
 				catch (Exception)
