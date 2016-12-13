@@ -21,7 +21,7 @@ namespace BitRipple
 				var loadResult = Repository.Data.Load();
 				if (loadResult.Success)
 				{
-					 ConsoleInterval.Run(Task.Run(GoThroughFeeds), TimeSpan.FromMinutes(Repository.Data.Settings.Interval));
+					 ConsoleInterval.Run(GoThroughFeeds, TimeSpan.FromMinutes(Repository.Data.Settings.Interval));
 				}
 				else
 				{
@@ -47,8 +47,6 @@ namespace BitRipple
 
 		  public Feed FetchRss(Feed feed)
 		  {
-				System.Diagnostics.Debug.WriteLine("Feeder");
-
 				var feedUpdateResult = Repository.Downloader.DownloadFeed(feed);
 				if (feedUpdateResult.Success)
 				{
