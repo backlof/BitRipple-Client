@@ -68,6 +68,8 @@ namespace BitRipple
 				var torrentsToDownload = await WhenAll(FindTorrentsToDownload, updatedFeeds);
 
 				await WhenAll(DownloadTorrent, torrentsToDownload.SelectMany(x => x));
+
+				Repository.Data.Save();
 		  }
 
 		  private async Task<IEnumerable<TOut>> WhenAll<TIn, TOut>(Func<TIn, TOut> func, IEnumerable<TIn> items)

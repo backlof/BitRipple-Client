@@ -14,13 +14,6 @@ namespace Repository
 				_context = context;
 		  }
 
-		  public RepositoryResult RegisterDownload(Download download)
-		  {
-				_context.Data.Downloads.Add(download);
-				_context.Data.SaveChanges();
-				return RepositoryResult.SuccessResult;
-		  }
-
 		  public RepositoryResult<List<Torrent>> DownloadFeed(Feed feed)
 		  {
 				if (String.IsNullOrWhiteSpace(feed.Url))
@@ -30,9 +23,9 @@ namespace Repository
 
 				try
 				{
+					 var torrents = _context.RssReader.FetchFeed(feed.Url);
 					 _context.Data.Settings.FeedDownloadCount++;
-					 _context.Data.SaveChanges();
-					 return RepositoryResult.Create(_context.RssReader.FetchFeed(feed.Url));
+					 return RepositoryResult.Create(torrents);
 				}
 				catch (Exception)
 				{
@@ -52,7 +45,6 @@ namespace Repository
 					 _context.TorrentDownloader.Download(download, _context.Data.Settings.Location);
 					 _context.Data.Downloads.Add(download);
 					 _context.Data.Settings.TorrentDownloadCount++;
-					 _context.Data.SaveChanges();
 					 return RepositoryResult.SuccessResult;
 				}
 				catch (Exception)
