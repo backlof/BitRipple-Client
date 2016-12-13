@@ -2,8 +2,8 @@
 
 namespace Repository
 {
-    public interface ITorrentDownloader
-    {
-        void Download(Download download, string location);
-    }
+	 public interface ITorrentDownloader
+	 {
+		  void Download(Download download, string location);
+	 }
 }

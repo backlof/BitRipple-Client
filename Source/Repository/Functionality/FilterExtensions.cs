@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -169,6 +168,7 @@ namespace Repository
 		  {
 				return filter.Downloads.Any(x => x.GetTvEpisode() == torrent.GetTvEpisode() && x.GetTvSeason() == torrent.GetTvSeason());
 		  }
+
 		  private static bool InternalDoesTitleMatch(Filter filter, string title)
 		  {
 				if (!Regex.IsMatch(title, filter.GetRegexPattern(), filter.IgnoreCaps ? RegexOptions.IgnoreCase : RegexOptions.None))

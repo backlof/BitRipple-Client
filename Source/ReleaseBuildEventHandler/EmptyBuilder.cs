@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ReleaseBuildEventHandler
+﻿namespace ReleaseBuildEventHandler
 {
 	 public class EmptyBuilder : IDataWriter
 	 {

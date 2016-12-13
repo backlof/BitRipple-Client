@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace Repository
 {
-    public interface IDataStorage
-    {
-        List<Download> Downloads { get; set; }
+	 public interface IDataStorage
+	 {
+		  List<Download> Downloads { get; set; }
 
-        List<Feed> Feeds { get; set; }
+		  List<Feed> Feeds { get; set; }
 
-        List<Filter> Filters { get; set; }
+		  List<Filter> Filters { get; set; }
 
-        Settings Settings { get; set; }
+		  Settings Settings { get; set; }
 
-        void LoadDownloads();
+		  void LoadDownloads();
 
-        void LoadFeeds();
+		  void LoadFeeds();
 
-        void LoadFilters();
+		  void LoadFilters();
 
-        void LoadSettings();
+		  void LoadSettings();
 
-        void SaveChanges();
-    }
+		  void SaveChanges();
+	 }
 }

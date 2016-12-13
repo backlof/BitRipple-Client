@@ -1,12 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Mocks;
 using Models;
+using Repository;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -25,6 +20,7 @@ namespace Tests
 		  }
 
 		  #region General
+
 		  [TestMethod]
 		  public void ShouldDownloadEverythingInFilter()
 		  {
@@ -323,9 +319,10 @@ namespace Tests
 				Assert.IsFalse(TorrentFilter.IsMatch(Filter, Torrent));
 		  }
 
-		  #endregion
+		  #endregion General
 
 		  #region Mini Series
+
 		  [TestMethod]
 		  public void ShouldMatchMiniSeries()
 		  {
@@ -344,7 +341,6 @@ namespace Tests
 					 Enabled = true,
 					 Downloads = new List<Download>
 					 {
-
 					 }
 				};
 
@@ -461,9 +457,11 @@ namespace Tests
 
 				Assert.IsFalse(TorrentFilter.IsMatch(Filter, Torrent));
 		  }
-		  #endregion
+
+		  #endregion Mini Series
 
 		  #region Tv Show
+
 		  [TestMethod]
 		  public void ShouldDownloadTvShow()
 		  {
@@ -482,7 +480,6 @@ namespace Tests
 					 Enabled = true,
 					 Downloads = new List<Download>
 					 {
-
 					 }
 				};
 
@@ -599,9 +596,11 @@ namespace Tests
 
 				Assert.IsFalse(TorrentFilter.IsMatch(Filter, Torrent));
 		  }
-		  #endregion
+
+		  #endregion Tv Show
 
 		  #region Season pack
+
 		  [TestMethod]
 		  public void ShouldDownloadSeasonPack()
 		  {
@@ -741,6 +740,7 @@ namespace Tests
 
 				Assert.IsFalse(TorrentFilter.IsMatch(Filter, Torrent));
 		  }
-		  #endregion
+
+		  #endregion Season pack
 	 }
 }

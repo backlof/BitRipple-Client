@@ -1,9 +1,9 @@
 ﻿namespace Models
 {
-    public enum DataContextId
-    {
-        Filter,
-        Download,
-        Feed
-    }
+	 public enum DataContextId
+	 {
+		  Filter,
+		  Download,
+		  Feed
+	 }
 }

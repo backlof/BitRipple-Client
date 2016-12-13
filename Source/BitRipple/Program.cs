@@ -11,7 +11,6 @@ namespace BitRipple
 		  {
 				AppDomain.CurrentDomain.UnhandledException += OnUnhandleException;
 				GetApplicationService().Run();
-
 		  }
 
 		  public static IApplicationService GetApplicationService(StandardKernel container = null)

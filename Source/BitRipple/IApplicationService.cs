@@ -1,7 +1,7 @@
 ﻿namespace BitRipple
 {
-    public interface IApplicationService
-    {
-        void Run();
-    }
+	 public interface IApplicationService
+	 {
+		  void Run();
+	 }
 }

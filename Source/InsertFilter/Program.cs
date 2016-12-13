@@ -12,7 +12,6 @@ namespace DataInsert
 		  private static void Main(string[] args)
 		  {
 				Execute(InsertFilter);
-
 		  }
 
 		  private static void Execute(Action<JsonDataStorage> method)

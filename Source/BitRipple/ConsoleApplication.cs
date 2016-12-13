@@ -1,11 +1,10 @@
 ﻿using Models;
+using Repository;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Repository;
 
 namespace BitRipple
 {
@@ -49,14 +48,12 @@ namespace BitRipple
 					 {
 						  await GoThroughFeeds();
 						  await Task.Delay(delay, token);
-
 					 } while (true);
 				}
 				catch (TaskCanceledException)
 				{
 					 Environment.Exit(0);
 				}
-
 		  }
 
 		  private async Task GoThroughFeeds()

@@ -1,13 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BitRipple;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
-using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BitRipple;
-using Rhino.Mocks;
 
 namespace Tests.Repository
 {

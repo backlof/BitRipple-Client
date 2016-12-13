@@ -1,10 +1,7 @@
-﻿using Ninject;
+﻿using BitRipple;
 using Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Rhino.Mocks;
-using BitRipple;
+using System;
 
 namespace Tests
 {
