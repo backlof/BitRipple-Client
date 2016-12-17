@@ -80,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Data\Settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +112,7 @@
   <Target Name="AfterBuild">
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
