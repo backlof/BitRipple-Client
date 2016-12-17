@@ -20,7 +20,7 @@ The client downloads all your feeds at the time interval of your choosing, and t
 ### Filter
 
 |Symbol|Meaning|Regex|
-|:-:|-|:-:|
+|:--:|--|:--:|
 |`*`|Wildcard; zero or more characters|`.*`|
 |`.`|1 whitespace character|`[\s\.\-_]`|
 |`?`|0 or 1 character of any type|`.?`|
@@ -28,7 +28,7 @@ The client downloads all your feeds at the time interval of your choosing, and t
 **Examples**
 
 |Filter|Torrent|Match|
-|-|-|:-:|
+|--|--|:--:|
 |`TV Show`|`Bob's TV Show S01E02 720P`|No|
 |`*TV Show`|`Bob's TV Show S01E02 720P`|Yes|
 |`Bob?s TV Show`|`Bob's TV Show S01E02 720P`|Yes|
@@ -46,7 +46,7 @@ The client downloads all your feeds at the time interval of your choosing, and t
 **Examples**
 
 |Include|Exclude|Torrent|Match|
-|-|-|-|:-:|
+|--|--|--|:--:|
 |` `|`720p`	|`TV Show S01E07 1080p WEBRip DD5.1 `|Yes|
 |` `|`1080p`	|`TV Show S01E07 1080p WEBRip DD5.1 `|No|
 |`1080p;DD5.1`|` `|`TV Show S01E07 1080p WEBRip DD5.1 `	|Yes|
