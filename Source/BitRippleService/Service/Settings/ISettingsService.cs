@@ -1,10 +1,8 @@
-﻿using BitRippleService.Model;
-
-namespace BitRippleService.Service
+﻿namespace BitRippleService.Service
 {
-	 public interface ISettingsService
-	 {
-		  string Location { get; set; }
-		  int Interval { get; set; }
-	 }
+	public interface ISettingsService
+	{
+		string Location { get; set; }
+		int Interval { get; set; }
+	}
 }

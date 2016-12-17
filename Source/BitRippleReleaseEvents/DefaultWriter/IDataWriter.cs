@@ -1,9 +1,7 @@
-﻿using BitRippleService.Repository;
-
-namespace BitRippleReleaseEvents.Defaults
+﻿namespace BitRippleReleaseEvents.Defaults
 {
-	 public interface IDataWriter
-	 {
-		  void BuildDefaults();
-	 }
+	public interface IDataWriter
+	{
+		void BuildDefaults();
+	}
 }

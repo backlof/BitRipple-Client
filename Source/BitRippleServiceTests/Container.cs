@@ -1,17 +1,50 @@
-﻿using Rhino.Mocks;
-using System;
-using BitRippleService.Service;
-using BitRippleService.Model;
+﻿using BitRippleService;
 using BitRippleService.Repository;
-using BitRippleService;
+using BitRippleService.Service;
 using Ninject;
-using System.IO;
-using BitRippleServiceTests.Interface;
+using Rhino.Mocks;
 
 namespace BitRippleServiceTests
 {
 	public class Container
 	{
+		#region Runtime
+
+		private static StandardKernel GetTestContainer()
+		{
+			StandardKernel container = new StandardKernel();
+			container.Bind<IRssReader>().To<XmlRssReader>().InSingletonScope();
+			container.Bind<ITorrentDownloader>().To<WebTorrentDownloader>().InSingletonScope();
+			container.Bind<IFilterFeed>().To<FeedFilterer>().InSingletonScope();
+			container.Bind<ISettingsService>().To<TestSettings>().InSingletonScope();
+			container.Bind<BitRippleContext>().To<DisposableSqLiteDbContext>().InSingletonScope();
+			return container;
+		}
+
+		public static DisposableApplicationService GetApplicationService()
+		{
+			return GetTestContainer().Get<DisposableApplicationService>();
+		}
+
+		public static DisposableBitRippleRepository GetRepository()
+		{
+			return GetTestContainer().Get<DisposableBitRippleRepository>();
+		}
+
+		public static DisposableSqLiteDbContext GetContext()
+		{
+			return GetTestContainer().Get<DisposableSqLiteDbContext>();
+		}
+
+		public static BitRippleServices GetService()
+		{
+			return GetTestContainer().Get<BitRippleServices>();
+		}
+
+		#endregion Runtime
+
+		#region Mocks
+
 		public static BitRippleServices GetStubService()
 		{
 			return new BitRippleServices()
@@ -36,35 +69,6 @@ namespace BitRippleServiceTests
 			};
 		}
 
-		private static StandardKernel GetTestContainer()
-		{
-			StandardKernel container = new StandardKernel();
-			container.Bind<IRssReader>().To<XmlRssReader>().InSingletonScope();
-			container.Bind<ITorrentDownloader>().To<WebTorrentDownloader>().InSingletonScope();
-			container.Bind<IFilterFeed>().To<FeedFilterer>().InSingletonScope();
-			container.Bind<ISettingsService>().To<TestSettings>().InSingletonScope();
-			container.Bind<BitRippleContext>().To<SQLiteDbContext>().InSingletonScope();
-			return container;
-		}
-
-		public static ApplicationService GetApplicationService()
-		{
-			return new ApplicationService(GetService(), GetStubRepository());
-		}
-
-		public static BitRippleRepository GetRepository()
-		{
-			return new BitRippleRepository(GetContext());
-		}
-
-		public static BitRippleServices GetService()
-		{
-			return GetTestContainer().Get<BitRippleServices>();
-		}
-
-		public static BitRippleContext GetContext()
-		{
-			return null;
-		}
+		#endregion Mocks
 	}
 }

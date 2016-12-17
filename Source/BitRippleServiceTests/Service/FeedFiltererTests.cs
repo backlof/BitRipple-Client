@@ -188,7 +188,7 @@ namespace BitRippleServiceTests.Service
 			Assert.AreEqual(4, Result.Count);
 		}
 
-		#endregion
+		#endregion FindMatchingTorrents
 
 		#region General
 

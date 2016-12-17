@@ -134,6 +134,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Context\BitRippleContextExtensions.cs" />
     <Compile Include="Repository\Context\BitRippleContext.cs" />
+    <Compile Include="Repository\Context\DisposableSqLiteDbContext.cs" />
     <Compile Include="Repository\Context\SQLiteDbContext.cs" />
     <Compile Include="Repository\FeedRepository.cs" />
     <Compile Include="Model\Download.cs" />

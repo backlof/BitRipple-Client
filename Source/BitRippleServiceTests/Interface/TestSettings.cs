@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BitRippleService.Service;
+﻿using BitRippleService.Service;
 using System.IO;
 
-namespace BitRippleServiceTests.Interface
+namespace BitRippleServiceTests
 {
 	public class TestSettings : ISettingsService
 	{

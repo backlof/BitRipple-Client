@@ -6,3 +6,4 @@ Todo
 - [ ] Create tests for the interval
 	- Send in a function that makes a counter
 	- Time how fast the timer runs
+- [ ] Create shared project with properties like `PathToDataFolder`

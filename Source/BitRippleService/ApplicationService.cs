@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BitRippleService.Functionality;
+﻿using BitRippleService.Functionality;
 using BitRippleService.Model;
-using System.IO;
-using BitRippleService.Service;
 using BitRippleService.Repository;
+using BitRippleService.Service;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BitRippleService
 {

@@ -6,11 +6,19 @@ namespace BitRippleService.Repository
 {
 	public abstract class BitRippleContext : DbContext
 	{
+		public static string Path => System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Data", "Data.db");
+
 		public DbSet<Filter> Filters { get; set; }
 		public DbSet<Feed> Feeds { get; set; }
 		public DbSet<Download> Downloads { get; set; }
 
-		public string File => Path.Combine(Directory.GetCurrentDirectory(), "Data", "Data.db");
+		public void DeleteDatabase()
+		{
+			if (File.Exists(Path))
+			{
+				File.Delete(Path);
+			}
+		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

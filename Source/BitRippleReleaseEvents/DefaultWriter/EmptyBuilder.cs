@@ -2,17 +2,17 @@
 
 namespace BitRippleReleaseEvents.Defaults
 {
-    public class EmptyBuilder : IDataWriter
-    {
-        private readonly BitRippleContext _context;
+	public class EmptyBuilder : IDataWriter
+	{
+		private readonly BitRippleContext _context;
 
-        public EmptyBuilder(BitRippleContext context)
-        {
-            _context = context;
-        }
+		public EmptyBuilder(BitRippleContext context)
+		{
+			_context = context;
+		}
 
-        public void BuildDefaults()
-        {
-        }
-    }
+		public void BuildDefaults()
+		{
+		}
+	}
 }

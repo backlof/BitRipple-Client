@@ -1,9 +1,6 @@
-﻿using System;
+﻿using BitRippleService.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BitRippleService.Model;
 
 namespace BitRippleService.Repository
 {
@@ -31,7 +28,6 @@ namespace BitRippleService.Repository
 				Id = x.Id,
 				Name = x.Name,
 				Url = x.Url
-
 			}).ToList();
 		}
 	}

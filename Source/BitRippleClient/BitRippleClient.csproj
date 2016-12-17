@@ -108,4 +108,7 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -1,9 +1,7 @@
-﻿using BitRippleService.Model;
-
-namespace BitRippleService.Service
+﻿namespace BitRippleService.Service
 {
-	 public interface ITorrentDownloader
-	 {
-		  void Download(string url, string location, string filename);
-	 }
+	public interface ITorrentDownloader
+	{
+		void Download(string url, string location, string filename);
+	}
 }

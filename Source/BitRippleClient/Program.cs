@@ -1,10 +1,9 @@
-﻿using Ninject;
+﻿using BitRippleService;
+using BitRippleService.Repository;
+using BitRippleService.Service;
+using Ninject;
 using System;
 using System.IO;
-using BitRippleService.Model;
-using BitRippleService.Service;
-using BitRippleService.Repository;
-using BitRippleService;
 using System.Threading.Tasks;
 
 namespace BitRippleClient
@@ -14,16 +13,11 @@ namespace BitRippleClient
 		public static void Main(string[] args)
 		{
 			AppDomain.CurrentDomain.UnhandledException += OnUnhandleException;
-			RunOnInterval(GetApplicationService, x => x.Update, x => TimeSpan.FromMinutes(x.Service.Settings.Interval), "Data");
+			RunOnInterval(GetApplicationService, x => x.Update, x => TimeSpan.FromMinutes(x.Service.Settings.Interval));
 		}
 
-		private static void RunOnInterval(Func<ApplicationService> service, Func<ApplicationService, Func<Task>> method, Func<ApplicationService, TimeSpan> interval, string dataFolder)
+		private static void RunOnInterval(Func<ApplicationService> service, Func<ApplicationService, Func<Task>> method, Func<ApplicationService, TimeSpan> interval)
 		{
-			if (!Directory.Exists(dataFolder))
-			{
-				Directory.CreateDirectory(dataFolder);
-			}
-
 			RunOnInterval(service(), method, interval);
 		}
 
