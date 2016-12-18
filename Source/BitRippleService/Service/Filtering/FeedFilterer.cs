@@ -47,6 +47,8 @@ namespace BitRippleService.Service
 				return false;
 			else if (!filter.DoesTitleMatch(torrent))
 				return false;
+			else if (!filter.IsTvOfAnyKind && filter.OnlyMatchOnce && filter.HasDownloads())
+				return false;
 			else if (filter.IsTvShow && (!torrent.IsTvShow || !filter.ShouldDownloadTvShow(torrent)))
 				return false;
 			else if (filter.IsMiniShow && (!torrent.IsMiniSeries || !filter.ShouldDownloadMiniSeries(torrent)))

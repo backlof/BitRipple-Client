@@ -158,7 +158,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BitRippleShared\BitRippleShared.csproj">
+      <Project>{299b2089-8841-4f5c-ba3f-2776ed710d58}</Project>
+      <Name>BitRippleShared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

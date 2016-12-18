@@ -1,4 +1,5 @@
 ﻿using BitRippleService.Model;
+using BitRippleShared;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 
@@ -6,7 +7,7 @@ namespace BitRippleService.Repository
 {
 	public abstract class BitRippleContext : DbContext
 	{
-		public static string Path => System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Data", "Data.db");
+		public static string Path => Constants.DatabaseFile;
 
 		public DbSet<Filter> Filters { get; set; }
 		public DbSet<Feed> Feeds { get; set; }

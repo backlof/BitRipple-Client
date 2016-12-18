@@ -90,6 +90,10 @@
       <Project>{ceb5f3e5-e464-4276-bb76-4f02fe19c1ea}</Project>
       <Name>BitRippleService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BitRippleShared\BitRippleShared.csproj">
+      <Project>{299b2089-8841-4f5c-ba3f-2776ed710d58}</Project>
+      <Name>BitRippleShared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

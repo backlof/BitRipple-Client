@@ -1,6 +1,6 @@
 ﻿using BitRippleService.Service;
+using BitRippleShared;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
 
 namespace BitRippleServiceTests.Service
 {
@@ -12,7 +12,7 @@ namespace BitRippleServiceTests.Service
 		[TestMethod]
 		public void ShouldBeAbleToDownloadTorrents()
 		{
-			WebTorrentDownloader.Download(@"http://www.mininova.org/tor/13363385", Directory.GetCurrentDirectory(), "test");
+			WebTorrentDownloader.Download(@"http://www.mininova.org/tor/13363385", Constants.Location, "test");
 		}
 	}
 }

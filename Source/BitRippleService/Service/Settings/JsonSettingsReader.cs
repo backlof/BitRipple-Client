@@ -1,4 +1,5 @@
 ﻿using BitRippleService.Model;
+using BitRippleShared;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -12,7 +13,7 @@ namespace BitRippleService.Service
 		public string Location { get; set; }
 		public int Interval { get; set; }
 
-		private static string SettingsFile => Path.Combine(Directory.GetCurrentDirectory(), "Data", "Settings.json");
+		private static string Path => Constants.SettingsJsonFile;
 
 		public JsonSettingsReader(Settings settings)
 		{
@@ -37,7 +38,7 @@ namespace BitRippleService.Service
 
 		public static void WriteFile(Settings settings)
 		{
-			using (var stream = new StreamWriter(SettingsFile, false))
+			using (var stream = new StreamWriter(Path, false))
 			{
 				(new JsonSerializer() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore }).Serialize(stream, settings);
 			}
@@ -45,7 +46,7 @@ namespace BitRippleService.Service
 
 		private Settings ReadFromJson()
 		{
-			return JsonConvert.DeserializeObject<Settings>(File.ReadAllText(SettingsFile));
+			return JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path));
 		}
 	}
 }

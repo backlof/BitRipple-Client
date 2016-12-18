@@ -36,6 +36,11 @@ namespace BitRippleService.Service
 				return true;
 		}
 
+		public static bool HasDownloads(this Filter filter)
+		{
+			return filter.Downloads.Any();
+		}
+
 		public static bool HasDownloadedBefore(this Filter filter, Torrent torrent)
 		{
 			return filter.Downloads.Any(x => x.GUID == torrent.GUID && x.Name == torrent.Name);

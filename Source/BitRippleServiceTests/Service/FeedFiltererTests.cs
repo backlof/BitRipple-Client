@@ -219,6 +219,33 @@ namespace BitRippleServiceTests.Service
 		}
 
 		[TestMethod]
+		public void ShouldNotDownloadWhenHasDownloadedBeforeAndOnlyMatchOnce()
+		{
+			Feed = new Feed
+			{
+				Id = 1
+			};
+
+			Filter = new Filter
+			{
+				TitleMatch = "*",
+				Exclude = "",
+				Include = "",
+				Disabled = false,
+				Downloads = new List<Download> { new Download { GUID = "321", Name = "The Whole Truth 2016 720p WEB-DL" } },
+				OnlyMatchOnce = true
+			};
+
+			Torrent = new Torrent
+			{
+				GUID = "123",
+				Name = "The Whole Truth 2016 1080p WEB-DL"
+			};
+
+			Assert.IsFalse(FeedFilterer.IsMatch(Filter, Torrent));
+		}
+
+		[TestMethod]
 		public void ShouldNotDownloadExcluded()
 		{
 			Feed = new Feed

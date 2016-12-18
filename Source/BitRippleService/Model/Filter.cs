@@ -42,6 +42,9 @@ namespace BitRippleService.Model
 		public virtual ICollection<Download> Downloads { get; set; }
 
 		[NotMapped]
+		public bool IsTvOfAnyKind => IsTvShow || IsMiniShow || IsSeasonPack;
+
+		[NotMapped]
 		public bool IsTvShow => Season != null && Episode != null;
 
 		[NotMapped]
