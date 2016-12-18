@@ -5,6 +5,7 @@ using BitRippleService.Service;
 using Ninject;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace BitRippleReleaseEvents
 {
@@ -24,7 +25,7 @@ namespace BitRippleReleaseEvents
 
 		public static void PostBuild(PostBuildr builder)
 		{
-			builder.RemoveUnwantedFiles();
+			builder.RemoveFilesWithExtension(".config", ".pdb", ".xml");
 			builder.BuildDefaults();
 		}
 	}
@@ -41,54 +42,23 @@ namespace BitRippleReleaseEvents
 			_location = Directory.GetCurrentDirectory();
 		}
 
-		public void RemoveUnwantedFiles()
+		public void RemoveFilesWithExtension(params string[] extensions)
 		{
-			RemoveUnwantedFiles(new[]
+			foreach (var extension in extensions)
 			{
-					 "AutoGenerate.exe",
-					 "AutoGenerate.pdb",
-					 "BitRipple.exe.config",
-					 "BitRipple.pdb",
-					 "BitRipple.vshost.exe",
-					 "BitRipple.vshost.exe.config",
-					 "BitRipple.vshost.exe.manifest",
-					 "BuildEventHandler.exe.config",
-					 "BuildEventHandler.pdb",
-					 "InsertFeed.exe.config",
-					 "InsertFeed.pdb",
-					 "InsertFilter.exe.config",
-					 "InsertFilter.pdb",
-					 "Models.pdb",
-					 "Newtonsoft.Json.xml",
-					 "Ninject.xml",
-					 "Repository.pdb",
-					 "ReleaseBuildEventHandler.exe.config",
-					 "ReleaseBuildEventHandler.pdb",
-					 "ChooseLocation.exe.config",
-					 "ChooseLocation.pdb",
-					 @"Data\\Data.db",
-					 "Microsoft.EntityFrameworkCore.Relational.xml",
-					 "Microsoft.EntityFrameworkCore.Sqlite.xml",
-					 "Microsoft.Data.Sqlite.xml",
-					 "Microsoft.EntityFrameworkCore.xml",
-					 "Microsoft.Extensions.Caching.Abstractions.xml",
-					 "Microsoft.Extensions.Caching.Memory.xml",
-					 "Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-					 "Microsoft.Extensions.DependencyInjection.xml",
-					 "Microsoft.Extensions.Logging.Abstractions.xml",
-					 "Microsoft.Extensions.Primitives.xml",
-					 "Service.pdb",
-					 "Remotion.Linq.xml",
-					 "Microsoft.Extensions.Options.xml",
-					 "Microsoft.Extensions.Logging.xml",
-					 "System.Collections.Immutable.xml",
-					 "System.Diagnostics.DiagnosticSource.xml",
-					 "System.Interactive.Async.xml",
-					 "System.Runtime.CompilerServices.Unsafe.xml"
-				});
+				RemoveFilesWithExtension(extension);
+			}
 		}
 
-		private void RemoveUnwantedFiles(params string[] filenames)
+		private void RemoveFilesWithExtension(string extension)
+		{
+			foreach (string file in Directory.GetFiles(_location, $"*{extension}").Where(item => item.EndsWith(extension)))
+			{
+				File.Delete(file);
+			}
+		}
+
+		public void RemoveFiles(params string[] filenames)
 		{
 			foreach (var filename in filenames)
 			{
