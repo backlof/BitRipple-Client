@@ -11,6 +11,11 @@ namespace BitRippleReleaseEvents.Defaults
 			_context = context;
 		}
 
+		public void Dispose()
+		{
+			_context.Dispose();
+		}
+
 		public void BuildDefaults()
 		{
 		}

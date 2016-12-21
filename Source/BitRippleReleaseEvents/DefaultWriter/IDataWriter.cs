@@ -1,6 +1,8 @@
-﻿namespace BitRippleReleaseEvents.Defaults
+﻿using System;
+
+namespace BitRippleReleaseEvents.Defaults
 {
-	public interface IDataWriter
+	public interface IDataWriter : IDisposable
 	{
 		void BuildDefaults();
 	}

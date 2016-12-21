@@ -137,6 +137,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyMerger.cs" />
     <Compile Include="DefaultWriter\EmptyBuilder.cs" />
     <Compile Include="DefaultWriter\IDataWriter.cs" />
     <Compile Include="DefaultWriter\MiniNovaBuilder.cs" />
@@ -164,8 +165,7 @@ del "$(TargetFileName)"
 	</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>if not exist "$(TargetDir)Library" mkdir "$(TargetDir)Library"</PreBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

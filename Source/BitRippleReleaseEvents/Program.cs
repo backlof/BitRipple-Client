@@ -7,15 +7,14 @@ using Ninject;
 using System;
 using System.IO;
 using System.Linq;
-using ILRepacking;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using ILRepacking;
 
 namespace BitRippleReleaseEvents
 {
 	public class Program
 	{
-		private static readonly StandardKernel _container = new StandardKernel();
-
 		public static void Main(string[] args)
 		{
 			Execute(PostBuild, typeof(EmptyBuilder), args);
@@ -32,17 +31,17 @@ namespace BitRippleReleaseEvents
 			builder.RemoveFilesWithExtension(".pdb", ".xml");
 			builder.RemoveFiles("BitRippleReleaseEvents.exe.config");
 			builder.BuildDefaults();
-			builder.Repack("BitRippleService.dll", "Microsoft.Data.Sqlite.dll", "Microsoft.EntityFrameworkCore.dll");
-			builder.MoveAssembliesToSubDirectory();
+			builder.Repack("Microsoft.Data.Sqlite.dll", "Microsoft.EntityFrameworkCore.dll");
+			//builder.MoveAssembliesToSubDirectory();
 		}
 	}
 
 	public class PostBuildr
 	{
 		private readonly Type _defaultType;
-		private string Location => Constants.Location;
-		private string DataDirectory => Constants.DataDirectory;
-		private string AssemblyDirectory => Constants.AssemblyDirectory;
+		private string Location { get; set; } = Constants.Location;
+		private string DataDirectory { get; set; } = Constants.DataDirectory;
+		private string AssemblyDirectory { get; set; } = Constants.AssemblyDirectory;
 
 		public PostBuildr(Type dataWriter)
 		{
@@ -104,44 +103,38 @@ namespace BitRippleReleaseEvents
 		{
 			foreach (var filename in filenames)
 			{
-				File.Delete(Path.Combine(Location, filename));
+				InternalRemoveFile(Path.Combine(Location, filename));
 			}
+		}
+
+		private void InternalRemoveFile(string file)
+		{
+			File.SetAttributes(file, FileAttributes.Normal);
+			File.Delete(file);
 		}
 
 		public void BuildDefaults()
 		{
-			StandardKernel container = new StandardKernel();
+			using (var datawriter = GetDataWriter())
+			{
+				datawriter.BuildDefaults();
+			}
+			JsonSettingsReader.WriteFile(new Settings { Interval = 5, Location = Directory.GetCurrentDirectory() });
+		}
+
+		private IDataWriter GetDataWriter(StandardKernel container = null)
+		{
+			container = new StandardKernel();
 			container.Bind<BitRippleContext>().To<SQLiteDbContext>().InSingletonScope();
 			container.Bind<IDataWriter>().To(_defaultType).InSingletonScope();
-			container.Get<IDataWriter>().BuildDefaults();
-			JsonSettingsReader.WriteFile(new Settings { Interval = 5, Location = Directory.GetCurrentDirectory() });
+			return container.Get<IDataWriter>();
 		}
 
 		internal void Repack(params string[] assemblies)
 		{
-			(new ILRepack(Options(assemblies))).Repack();
-			// Have to delete dlls at the end because it is used
-		}
+			(new AssemblyMerger { Location = Location, Executable = "BitRippleClient.exe", Assemblies = assemblies }).Merge();
 
-		internal RepackOptions Options(params string[] assemblies)
-		{
-			return new RepackOptions
-			{
-				Parallel = true,
-				Internalize = true,
-				InputAssemblies = GetArray("BitRippleClient.exe", assemblies),
-				TargetKind = ILRepack.Kind.Exe,
-				OutputFile = "BitRippleClient.exe",
-				AllowWildCards = true,
-				SearchDirectories = new string[] { Location }
-			};
-		}
-
-		private string[] GetArray(string item, params string[] items)
-		{
-			var list = new List<string>() { item };
-			list.AddRange(items);
-			return list.ToArray();
+			RemoveFiles(assemblies);
 		}
 	}
 }
