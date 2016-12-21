@@ -1,4 +1,4 @@
 {
-  "Location": "%APPDATA%",
-  "Interval": 5
+	"Interval": 5,
+	"Location": "Torrents\\"
 }

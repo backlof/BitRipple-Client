@@ -5,6 +5,14 @@ namespace BitRippleService.Model
 {
 	public class Feed
 	{
+		public Feed()
+		{
+			Name = "";
+			Filters = new List<Filter>();
+			Downloads = new List<Download>();
+			Torrents = new List<Torrent>();
+		}
+
 		public int Id { get; set; }
 
 		public string Name { get; set; }

@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ILRepacking;
 
 namespace BitRippleReleaseEvents
 {
@@ -17,7 +16,7 @@ namespace BitRippleReleaseEvents
 	{
 		public static void Main(string[] args)
 		{
-			Execute(PostBuild, typeof(EmptyBuilder), args);
+			Execute(PostBuild, typeof(MiniNovaBuilder), args);
 		}
 
 		private static void Execute(Action<PostBuildr> method, Type defaultType, string[] args, StandardKernel container = null)
@@ -31,8 +30,7 @@ namespace BitRippleReleaseEvents
 			builder.RemoveFilesWithExtension(".pdb", ".xml");
 			builder.RemoveFiles("BitRippleReleaseEvents.exe.config");
 			builder.BuildDefaults();
-			builder.Repack("Microsoft.Data.Sqlite.dll", "Microsoft.EntityFrameworkCore.dll");
-			//builder.MoveAssembliesToSubDirectory();
+			builder.MoveAssembliesToSubDirectory();
 		}
 	}
 
@@ -66,7 +64,10 @@ namespace BitRippleReleaseEvents
 
 		public void MoveAssembliesToSubDirectory()
 		{
-			Directory.Delete(AssemblyDirectory, true);
+			if (Directory.Exists(AssemblyDirectory))
+			{
+				Directory.Delete(AssemblyDirectory, true);
+			}
 			Directory.CreateDirectory(AssemblyDirectory);
 
 			foreach (string file in Directory.GetFiles(Location, $"*.dll").Where(item => item.EndsWith(".dll")))
@@ -119,7 +120,6 @@ namespace BitRippleReleaseEvents
 			{
 				datawriter.BuildDefaults();
 			}
-			JsonSettingsReader.WriteFile(new Settings { Interval = 5, Location = Directory.GetCurrentDirectory() });
 		}
 
 		private IDataWriter GetDataWriter(StandardKernel container = null)
@@ -128,13 +128,6 @@ namespace BitRippleReleaseEvents
 			container.Bind<BitRippleContext>().To<SQLiteDbContext>().InSingletonScope();
 			container.Bind<IDataWriter>().To(_defaultType).InSingletonScope();
 			return container.Get<IDataWriter>();
-		}
-
-		internal void Repack(params string[] assemblies)
-		{
-			(new AssemblyMerger { Location = Location, Executable = "BitRippleClient.exe", Assemblies = assemblies }).Merge();
-
-			RemoveFiles(assemblies);
 		}
 	}
 }

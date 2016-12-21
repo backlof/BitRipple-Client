@@ -8,6 +8,17 @@ namespace BitRippleService.Model
 {
 	public class Filter
 	{
+		public Filter()
+		{
+			Name = "";
+			Downloads = new List<Download>();
+			Disabled = true;
+			TitleMatch = "";
+			Exclude = "";
+			Include = "";
+			OnlyMatchOnce = true;
+		}
+
 		public int Id { get; set; }
 
 		public string Name { get; set; }

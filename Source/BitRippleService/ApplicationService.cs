@@ -66,7 +66,7 @@ namespace BitRippleService
 					Service.TorrentDownloader.Download(torrent.FileUrl, Service.Settings.Location, torrent.CleanName);
 					Repository.Feed.AddDownload(torrent);
 				}
-				catch (Exception)
+				catch (Exception e)
 				{
 					Logger.WriteError($"Couldn't download <{torrent.Name}>");
 				}

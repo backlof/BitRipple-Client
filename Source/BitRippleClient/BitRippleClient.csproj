@@ -81,7 +81,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="Data\Settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
@@ -116,7 +116,6 @@
   <Target Name="AfterBuild">
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>if not exist "$(TargetDir)Torrents" mkdir "$(TargetDir)Torrents"</PreBuildEvent>
   </PropertyGroup>
 </Project>

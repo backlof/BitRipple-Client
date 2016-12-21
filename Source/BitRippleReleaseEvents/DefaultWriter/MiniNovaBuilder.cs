@@ -69,6 +69,7 @@ namespace BitRippleReleaseEvents.Defaults
 				Exclude = "",
 				FeedId = ids[0],
 			});
+
 			_context.Filters.Add(new Filter
 			{
 				Name = "Family Guy",

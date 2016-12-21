@@ -46,12 +46,7 @@ namespace BitRippleService.Service
 
 		private BinaryWriter GetBinaryWriter(string location, string filename)
 		{
-			return new BinaryWriter(new FileStream(Path.Combine(location, filename), FileMode.Create));
-		}
-
-		private FileStream GetFileStream(string location, string filename)
-		{
-			return new FileStream(Path.Combine(location, filename), FileMode.Create);
+			return new BinaryWriter(new FileStream(Path.Combine(location, filename), FileMode.OpenOrCreate));
 		}
 
 		private WebRequest GetRequest(string url, WebRequest wr = null)
