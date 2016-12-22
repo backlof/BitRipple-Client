@@ -123,6 +123,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Client\ConsoleIntervalTester.cs" />
     <Compile Include="Interface\DisposableApplicationService.cs" />
     <Compile Include="Interface\DisposableBitRippleRepository.cs" />
     <Compile Include="Interface\DisposableSqLiteDbContext.cs" />
@@ -139,6 +140,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BitRippleClient\BitRippleClient.csproj">
+      <Project>{62528f02-ece2-4823-a704-13f5b52311f2}</Project>
+      <Name>BitRippleClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BitRippleService\BitRippleService.csproj">
       <Project>{ceb5f3e5-e464-4276-bb76-4f02fe19c1ea}</Project>
       <Name>BitRippleService</Name>
@@ -153,9 +158,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApplicationService\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

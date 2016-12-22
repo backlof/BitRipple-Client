@@ -16,7 +16,7 @@ namespace BitRippleReleaseEvents
 	{
 		public static void Main(string[] args)
 		{
-			Execute(PostBuild, typeof(MiniNovaBuilder), args);
+			Execute(PostBuild, typeof(EmptyBuilder), args);
 		}
 
 		private static void Execute(Action<PostBuildr> method, Type defaultType, string[] args, StandardKernel container = null)

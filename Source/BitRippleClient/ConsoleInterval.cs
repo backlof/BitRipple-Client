@@ -8,17 +8,17 @@ namespace BitRippleClient
 	{
 		public static void Run(Func<Task> action, TimeSpan ts)
 		{
-			InternalRun(action, ts, new CancellationTokenSource());
+			Run(action, ts, new CancellationTokenSource());
 		}
 
-		private static void InternalRun(Func<Task> action, TimeSpan ts, CancellationTokenSource tks)
+		private static void Run(Func<Task> action, TimeSpan ts, CancellationTokenSource tks)
 		{
-			IntervalRunner(action, ts, tks);
+			Run(action, ts, () => { Environment.Exit(0); }, new CancellationTokenSource());
 			Console.Read();
 			tks.Cancel();
 		}
 
-		private static async void IntervalRunner(Func<Task> action, TimeSpan ts, CancellationTokenSource tks)
+		public static async void Run(Func<Task> action, TimeSpan ts, Action end, CancellationTokenSource tks)
 		{
 			try
 			{
@@ -26,11 +26,12 @@ namespace BitRippleClient
 				{
 					await Task.Run(action);
 					await Task.Delay(ts, tks.Token);
+
 				} while (!tks.IsCancellationRequested);
 			}
 			catch (TaskCanceledException)
 			{
-				Environment.Exit(0);
+				end();
 			}
 		}
 	}
