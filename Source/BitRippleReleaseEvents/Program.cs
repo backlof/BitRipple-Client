@@ -1,14 +1,10 @@
 ﻿using BitRippleReleaseEvents.Defaults;
-using BitRippleService.Model;
 using BitRippleService.Repository;
-using BitRippleService.Service;
 using BitRippleShared;
 using Ninject;
 using System;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BitRippleReleaseEvents
 {

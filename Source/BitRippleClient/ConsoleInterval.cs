@@ -26,7 +26,6 @@ namespace BitRippleClient
 				{
 					await Task.Run(action);
 					await Task.Delay(ts, tks.Token);
-
 				} while (!tks.IsCancellationRequested);
 			}
 			catch (TaskCanceledException)
