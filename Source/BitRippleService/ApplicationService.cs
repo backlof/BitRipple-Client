@@ -55,9 +55,11 @@ namespace BitRippleService
 
 		public void DownloadTorrent(Download torrent)
 		{
+			Logger.Log($"Downloading <{torrent.Name}>");
+
 			if (String.IsNullOrWhiteSpace(Service.Settings.Location) && !Directory.Exists(Service.Settings.Location))
 			{
-				Logger.WriteError($"Couldn't find the download location for <{torrent.Name}>");
+				Logger.WriteError($"Can't download torrent <{torrent.Name}> to location <{Service.Settings.Location}>");
 			}
 			else
 			{
