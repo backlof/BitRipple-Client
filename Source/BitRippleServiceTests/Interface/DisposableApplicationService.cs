@@ -1,5 +1,5 @@
 ﻿using BitRippleService;
-using BitRippleService.Service;
+using BitRippleService.Utility;
 using System;
 
 namespace BitRippleServiceTests
@@ -8,7 +8,7 @@ namespace BitRippleServiceTests
 	{
 		public new DisposableBitRippleRepository Repository { get; set; }
 
-		public DisposableApplicationService(BitRippleServices service, DisposableBitRippleRepository repository) : base(service, repository)
+		public DisposableApplicationService(BitRippleService.Utility.BitRippleUtilities service, DisposableBitRippleRepository repository) : base(service, repository)
 		{
 		}
 

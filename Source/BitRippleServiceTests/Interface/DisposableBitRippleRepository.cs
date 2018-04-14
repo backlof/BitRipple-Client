@@ -3,7 +3,7 @@ using System;
 
 namespace BitRippleServiceTests
 {
-	public class DisposableBitRippleRepository : BitRippleRepository, IDisposable
+	public class DisposableBitRippleRepository : BitRippleRepositories, IDisposable
 	{
 		private readonly DisposableSqLiteDbContext _context;
 

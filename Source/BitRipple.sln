@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitRippleClient", "BitRippleClient\BitRippleClient.csproj", "{62528F02-ECE2-4823-A704-13F5B52311F2}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitRippleService", "BitRippleService\BitRippleService.csproj", "{CEB5F3E5-E464-4276-BB76-4F02FE19C1EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitRippleShared", "BitRippleShared\BitRippleShared.csproj", "{299B2089-8841-4F5C-BA3F-2776ED710D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitRippleRepository", "BitRippleRepository\BitRippleRepository.csproj", "{6426D84A-814E-41CB-B6EF-740A29046AC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitRippleUtility", "BitRippleUtility\BitRippleUtility.csproj", "{F86B9C14-125F-4ED1-B0D2-C31BA75DB220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitRippleModel", "BitRippleModels\BitRippleModel.csproj", "{748C1412-6637-416E-B646-A832BB3E8EA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +43,18 @@ Global
 		{299B2089-8841-4F5C-BA3F-2776ED710D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{299B2089-8841-4F5C-BA3F-2776ED710D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{299B2089-8841-4F5C-BA3F-2776ED710D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6426D84A-814E-41CB-B6EF-740A29046AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6426D84A-814E-41CB-B6EF-740A29046AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6426D84A-814E-41CB-B6EF-740A29046AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6426D84A-814E-41CB-B6EF-740A29046AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86B9C14-125F-4ED1-B0D2-C31BA75DB220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86B9C14-125F-4ED1-B0D2-C31BA75DB220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86B9C14-125F-4ED1-B0D2-C31BA75DB220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86B9C14-125F-4ED1-B0D2-C31BA75DB220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{748C1412-6637-416E-B646-A832BB3E8EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{748C1412-6637-416E-B646-A832BB3E8EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{748C1412-6637-416E-B646-A832BB3E8EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{748C1412-6637-416E-B646-A832BB3E8EA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

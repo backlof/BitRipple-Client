@@ -7,14 +7,14 @@ namespace BitRippleService.Functionality
 {
 	public class TaskEnumerator
 	{
-		public static async Task<IEnumerable<TOut>> WhenAll<TIn, TOut>(Func<TIn, TOut> func, IEnumerable<TIn> items)
+		public static async Task<IEnumerable<TOut>> WhenAll<TIn, TOut>(Func<ILogger, TIn, TOut> func, ILogger logger, IEnumerable<TIn> items)
 		{
-			return await Task.WhenAll(items.Select(item => Task.Run(() => func(item))));
+			return await Task.WhenAll(items.Select(item => Task.Run(() => func(logger, item))));
 		}
 
-		public static async Task WhenAll<T>(Action<T> action, IEnumerable<T> items)
+		public static async Task WhenAll<T>(Action<ILogger,T> action, ILogger logger, IEnumerable<T> items)
 		{
-			await Task.WhenAll(items.Select(item => Task.Run(() => action(item))));
+			await Task.WhenAll(items.Select(item => Task.Run(() => action(logger,item))));
 		}
 	}
 }

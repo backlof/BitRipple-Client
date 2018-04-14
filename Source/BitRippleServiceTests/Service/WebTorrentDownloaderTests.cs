@@ -1,4 +1,4 @@
-﻿using BitRippleService.Service;
+﻿using BitRippleService.Utility;
 using BitRippleShared;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -1,6 +1,6 @@
 ﻿using BitRippleService;
 using BitRippleService.Repository;
-using BitRippleService.Service;
+using BitRippleService.Utility;
 using Ninject;
 using System;
 using System.IO;
@@ -13,7 +13,7 @@ namespace BitRippleClient
 		public static void Main(string[] args)
 		{
 			AppDomain.CurrentDomain.UnhandledException += OnUnhandleException;
-			RunOnInterval(GetApplicationService, x => x.Update, x => TimeSpan.FromMinutes(x.Service.Settings.Interval));
+			RunOnInterval(GetApplicationService, x => x.Update, x => TimeSpan.FromMinutes(x.Utility.Settings.Interval));
 		}
 
 		private static void RunOnInterval(Func<ApplicationService> service, Func<ApplicationService, Func<Task>> method, Func<ApplicationService, TimeSpan> interval)

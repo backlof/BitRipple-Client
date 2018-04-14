@@ -1,6 +1,6 @@
 ﻿using BitRippleService;
 using BitRippleService.Repository;
-using BitRippleService.Service;
+using BitRippleService.Utility;
 using Ninject;
 using Rhino.Mocks;
 
@@ -38,7 +38,7 @@ namespace BitRippleServiceTests
 
 		public static BitRippleServices GetService()
 		{
-			return GetTestContainer().Get<BitRippleServices>();
+			return GetTestContainer().Get<BitRippleService.Utility.BitRippleUtilities>();
 		}
 
 		#endregion Runtime
@@ -47,7 +47,7 @@ namespace BitRippleServiceTests
 
 		public static BitRippleServices GetStubService()
 		{
-			return new BitRippleServices()
+			return new BitRippleService.Utility.BitRippleUtilities()
 			{
 				Filter = MockRepository.GenerateStub<IFilterFeed>(),
 				RssReader = MockRepository.GenerateStub<IRssReader>(),
@@ -61,9 +61,9 @@ namespace BitRippleServiceTests
 			return new ApplicationService(GetStubService(), GetStubRepository());
 		}
 
-		public static BitRippleRepository GetStubRepository()
+		public static BitRippleRepositories GetStubRepository()
 		{
-			return new BitRippleRepository()
+			return new BitRippleRepositories()
 			{
 				Feed = MockRepository.GenerateStub<IFeedRepository>()
 			};

@@ -1,4 +1,4 @@
-﻿using BitRippleService.Service;
+﻿using BitRippleService.Utility;
 using BitRippleShared;
 
 namespace BitRippleServiceTests
